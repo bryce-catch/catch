@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATCH - Carolina Adapts Toys for Children</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            cursor: pointer;
+        }
+
+        .logo-box {
+            background: linear-gradient(135deg, #5DBAAB 0%, #4AA89A 100%);
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            cursor: pointer;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #FF6B4A;
+            border-bottom: 3px solid #FF6B4A;
+        }
+
+        .donate-btn {
+            background: linear-gradient(135deg, #5DBAAB 0%, #4AA89A 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(93, 186, 171, 0.4);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(93, 186, 171, 0.95) 0%, rgba(74, 168, 154, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1587616211892-669c6adae27e?w=1600') center/cover;
+            color: white;
+            padding: 6rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #FF6B4A;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #FF6B4A 0%, #FF5738 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .stat p {
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5DBAAB 0%, #4AA89A 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .two-column img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .two-column h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .two-column p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .checklist li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #666;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF6B4A;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonials {
+            background: #f8f9fa;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .quote {
+            font-size: 3rem;
+            color: #5DBAAB;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+        }
+
+        .testimonial-role {
+            color: #5DBAAB;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #FF6B4A 0%, #FF5738 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background: #1a2332;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: #b0b8c1;
+            margin: 0.8rem 0;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #2c3847;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5DBAAB;
+            text-decoration: none;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #b0b8c1;
+            display: block;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2c3847;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            color: #b0b8c1;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: #b0b8c1;
+            text-decoration: none;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #5DBAAB 0%, #4AA89A 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .value-card {
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF6B4A 0%, #FF5738 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .stats-container, .cards-grid { grid-template-columns: 1fr; }
+            .two-column { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-box">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">CATCH</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a class="nav-link" onclick="showPage('about')">About</a></li>
+                <li><a class="nav-link" onclick="showPage('team')">Team</a></li>
+                <li><a class="nav-link" onclick="showPage('partners')">Partners</a></li>
+            </ul>
+            <a href="#" class="donate-btn">Donate Now</a>
+        </nav>
+    </header>
+
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="logo-box" style="display: inline-flex; margin-bottom: 2rem;">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">CATCH</span>
+                </div>
+                <h1>Hi! We're CATCH!</h1>
+                <p>We strive to "catch" the children who fall through the cracks of the mainstream toy market.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                    <a href="#" class="btn btn-secondary">Support Our Mission</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat"><h3>500+</h3><p>Toys Adapted</p></div>
+                <div class="stat"><h3>150+</h3><p>Children Helped</p></div>
+                <div class="stat"><h3>25+</h3><p>Volunteers</p></div>
+                <div class="stat"><h3>10+</h3><p>Partner Organizations</p></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>How We Make a Difference</h2>
+                    <p>Through innovative toy adaptations and community support, we're creating a world where every child can experience the joy and benefits of play.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">🔧</div>
+                        <h3>Toy Adaptation</h3>
+                        <p>We modify toys to make them accessible for children with various disabilities, adding switches and sensory features.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">❤️</div>
+                        <h3>Community Support</h3>
+                        <p>Building a supportive community of families, volunteers, and organizations working together for inclusive play.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎓</div>
+                        <h3>Educational Workshops</h3>
+                        <p>Teaching families and caregivers how to adapt toys and create inclusive play environments at home.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🤝</div>
+                        <h3>Volunteer Programs</h3>
+                        <p>Training volunteers to help with toy adaptations and community outreach initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #f8f9fa;">
+            <div class="container">
+                <div class="two-column">
+                    <div>
+                        <h2>Transforming Lives Through Adaptive Play</h2>
+                        <p>Every adapted toy we create opens up new possibilities for a child with disabilities.</p>
+                        <ul class="checklist">
+                            <li>Custom switch adaptations for motor disabilities</li>
+                            <li>Sensory-friendly modifications for autism spectrum</li>
+                            <li>Visual and auditory enhancements for sensory impairments</li>
+                            <li>Family training and ongoing support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600" alt="Children playing">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Stories from Our Community</h2>
+                    <p>Hear from families and volunteers whose lives have been touched by our mission.</p>
+                </div>
+                <div class="cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="testimonial">
+                        <div class="quote">"</div>
+                        <p class="testimonial-text">Carolina Adapts has transformed playtime for my daughter. The adapted toys have given her independence and joy that we never thought possible.</p>
+                        <p class="testimonial-author">Sarah Johnson</p>
+                        <p class="testimonial-role">Parent</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="quote">"</div>
+                        <p class="testimonial-text">Volunteering with this organization has been incredibly rewarding. Seeing the impact of our work on children and families is amazing.</p>
+                        <p class="testimonial-author">Michael Chen</p>
+                        <p class="testimonial-role">Volunteer</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="quote">"</div>
+                        <p class="testimonial-text">The team's dedication to making toys accessible is inspiring. They've helped so many children in our community experience the joy of play.</p>
+                        <p class="testimonial-author">Dr. Emily Rodriguez</p>
+                        <p class="testimonial-role">Pediatric Therapist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Help Us Reach More Children</h2>
+                <p>Your support helps us adapt more toys, train more volunteers, and bring the joy of accessible play to children throughout North Carolina and beyond.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Make a Donation</a>
+                    <a href="#" class="btn btn-secondary">Become a Volunteer</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="about" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <div class="logo-box" style="display: inline-flex; margin-bottom: 2rem;">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">CATCH</span>
+                </div>
+                <h1>About CATCH</h1>
+                <p>Carolina Adapts Toys for Children (CATCH) is dedicated to making play accessible for every child, regardless of their abilities.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="two-column">
+                    <div>
+                        <h2>Our Story</h2>
+                        <p>Carolina Adapts Toys for Children began as a simple idea: what if we could modify toys to make them accessible for children with disabilities? What started as a small project at UNC Chapel Hill has grown into a thriving nonprofit organization serving families across North Carolina.</p>
+                        <p>Our founders recognized that while the toy market offers countless options for typically developing children, children with disabilities often face barriers to play. Traditional toys may be difficult to activate, lack sensory feedback, or simply not be designed with accessibility in mind.</p>
+                        <p>Today, we've adapted hundreds of toys, trained dozens of volunteers, and most importantly, brought smiles to countless children's faces. Our work goes beyond simple modifications – we're building a more inclusive world where every child can participate in the fundamental human experience of play.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600" alt="Our Story">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Core Values</h2>
+                    <p>These principles guide everything we do and shape our approach to creating inclusive play experiences.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="value-card">
+                        <div class="value-icon">❤️</div>
+                        <h3>Inclusion</h3>
+                        <p>We believe every child deserves access to play, regardless of their abilities or disabilities.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation</h3>
+                        <p>We continuously develop new and creative solutions to make toys more accessible.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Community</h3>
+                        <p>We build strong partnerships with families, volunteers, and organizations to maximize our impact.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⭐</div>
+                        <h3>Excellence</h3>
+                        <p>We strive for the highest quality in every adaptation and interaction with our community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>The Impact of Accessible Play</h2>
+                <p style="margin-bottom: 3rem;">Play is not just fun – it's fundamental to child development. Through play, children develop motor skills, cognitive abilities, social connections, and emotional resilience. When children with disabilities can't access traditional toys, they miss out on these crucial developmental opportunities.</p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto;">
+                    <div style="background: rgba(26, 109, 97, 0.8); padding: 2.5rem; border-radius: 12px;">
+                        <h3 style="font-size: 3rem; font-weight: 800;">200+</h3>
+                        <p style="font-size: 1.1rem;">Toys Donated</p>
+                    </div>
+                    <div style="background: rgba(93, 186, 171, 0.8); padding: 2.5rem; border-radius: 12px;">
+                        <h3 style="font-size: 3rem; font-weight: 800;">250+</h3>
+                        <p style="font-size: 1.1rem;">Volunteers</p>
+                    </div>
+                    <div style="background: rgba(26, 109, 97, 0.8); padding: 2.5rem; border-radius: 12px;">
+                        <h3 style="font-size: 3rem; font-weight: 800;">100+</h3>
+                        <p style="font-size: 1.1rem;">Active Volunteers</p>
+                    </div>
+                    <div style="background: rgba(93, 186, 171, 0.8); padding: 2.5rem; border-radius: 12px;">
+                        <h3 style="font-size: 3rem; font-weight: 800;">10+</h3>
+                        <p style="font-size: 1.1rem;">Partner Organizations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="team" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <div class="logo-box" style="display: inline-flex; margin-bottom: 2rem;">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">CATCH</span>
+                </div>
+                <h1>Our Team</h1>
+                <p>Meet the passionate individuals who make CATCH's mission possible through their dedication and expertise.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Leadership Team</h2>
+                    <p>Our dedicated leaders guide CATCH's mission to make adaptive toys accessible for all children.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Michael Weaver" style="width: 100%; height: 280px; object-fit: cover;">
+                        <div style="padding: 1.8rem;">
+                            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Michael Weaver</h3>
+                            <p style="color: #5DBAAB; font-weight: 600; margin-bottom: 1rem;">President</p>
+                            <p style="color: #666; line-height: 1.6;">Leading CATCH's mission to make adaptive toys accessible for children with disabilities through innovative community partnerships.</p>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="#" style="color: #5DBAAB;">in</a>
+                                <a href="#" style="color: #5DBAAB;">✉</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=300&fit=crop" alt="Drew McRacken" style="width: 100%; height: 280px; object-fit: cover;">
+                        <div style="padding: 1.8rem;">
+                            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Drew McRacken</h3>
+                            <p style="color: #5DBAAB; font-weight: 600; margin-bottom: 1rem;">Vice President</p>
+                            <p style="color: #666; line-height: 1.6;">Supporting organizational strategy and program development to expand CATCH's reach across North Carolina communities.</p>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="#" style="color: #5DBAAB;">in</a>
+                                <a href="#" style="color: #5DBAAB;">✉</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop" alt="Maddie Dyson" style="width: 100%; height: 280px; object-fit: cover;">
+                        <div style="padding: 1.8rem;">
+                            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Maddie Dyson</h3>
+                            <p style="color: #5DBAAB; font-weight: 600; margin-bottom: 1rem;">Treasurer</p>
+                            <p style="color: #666; line-height: 1.6;">Managing financial operations and ensuring sustainable funding for adaptive toy programs and community outreach initiatives.</p>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="#" style="color: #5DBAAB;">in</a>
+                                <a href="#" style="color: #5DBAAB;">✉</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background:
